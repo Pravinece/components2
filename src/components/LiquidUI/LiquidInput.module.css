@@ -1,0 +1,65 @@
+.wrapper {
+  width: 280px;
+}
+
+.label {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  color: #0077ff;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+
+.inputWrap {
+  position: relative;
+}
+
+.input {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 999px;
+  background: #f0f7ff;
+  border: 2px solid #b3d4ff;
+  color: #003080;
+  font-size: 14px;
+  font-weight: 500;
+  outline: none;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-sizing: border-box;
+}
+
+.input::placeholder {
+  color: #90b8e0;
+}
+
+.input:focus {
+  border-color: #0077ff;
+  background: #fff;
+  box-shadow:
+    0 0 0 4px rgba(0, 119, 255, 0.12),
+    0 8px 30px rgba(0, 119, 255, 0.2);
+  border-radius: 20px;
+}
+
+.wave {
+  position: absolute;
+  bottom: -2px; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #00c9ff, #0077ff, #6a11cb, #00c9ff);
+  background-size: 200% 100%;
+  border-radius: 0 0 999px 999px;
+  opacity: 0;
+  transition: opacity 0.3s;
+  animation: waveSlide 2s linear infinite;
+}
+
+.input:focus ~ .wave {
+  opacity: 1;
+}
+
+@keyframes waveSlide {
+  0% { background-position: 0% 0%; }
+  100% { background-position: 200% 0%; }
+}

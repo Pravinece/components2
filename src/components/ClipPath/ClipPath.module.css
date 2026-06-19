@@ -1,0 +1,632 @@
+.container {
+  width: 100vw;
+  min-height: 100vh;
+  padding: 40px;
+  background: #1a1a2e;
+  color: white;
+  font-family: monospace;
+}
+
+.row {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+
+.box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.img {
+  width: 200px;
+  height: 200px;
+  background: url('/panda.webp') center/cover;
+  transition: clip-path 0.6s ease;
+}
+
+/* ============================================
+   WIPE REVEALS
+   Points go clockwise from top-left
+   polygon(x1 y1, x2 y2, x3 y3, ...)
+   ============================================ */
+
+/*
+  Wipe Left: starts as thin line on left → expands right
+  
+  CLOSED:                    OPEN:
+  ┌┐                        ┌──────────────┐
+  ││                        │              │
+  ││                        │              │
+  └┘                        └──────────────┘
+  polygon(0 0, 0 0, 0 100%, 0 100%)  →  polygon(0 0, 100% 0, 100% 100%, 0 100%)
+*/
+.wipeLeft {
+  clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+}
+.box:hover .wipeLeft {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+
+/*
+  Wipe Right: starts as thin line on right → expands left
+  polygon(100% 0, 100% 0, 100% 100%, 100% 100%)  →  polygon(0 0, 100% 0, 100% 100%, 0 100%)
+*/
+.wipeRight {
+  clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
+}
+.box:hover .wipeRight {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+
+/*
+  Wipe Top: starts as thin line on top → expands down
+  polygon(0 0, 100% 0, 100% 0, 0 0)  →  polygon(0 0, 100% 0, 100% 100%, 0 100%)
+*/
+.wipeTop {
+  clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+}
+.box:hover .wipeTop {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+
+/*
+  Wipe Bottom: starts as thin line on bottom → expands up
+  polygon(0 100%, 100% 100%, 100% 100%, 0 100%)  →  polygon(0 0, 100% 0, 100% 100%, 0 100%)
+*/
+.wipeBottom {
+  clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);
+}
+.box:hover .wipeBottom {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+
+/* ============================================
+   DIAGONAL REVEALS
+   Need extra points to create the angled edge
+   ============================================ */
+
+/*
+  Diagonal Left: angled wipe from right to left
+  
+  CLOSED:              OPEN:
+       /|             ┌──────────────┐
+      / |      →      │              │
+     /  |             │              │
+    /___|             └──────────────┘
+
+  5 points needed to keep the diagonal edge
+*/
+.diagLeft {
+  clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%, 100% 0);
+}
+.box:hover .diagLeft {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, -20% 50%);
+}
+
+/*
+  Diagonal Right: angled wipe from left to right
+*/
+.diagRight {
+  clip-path: polygon(0 0, 0 0, 0 100%, 0 100%, 0 50%);
+}
+.box:hover .diagRight {
+  clip-path: polygon(0 0, 100% 0, 120% 50%, 100% 100%, 0 100%);
+}
+
+/*
+  Diagonal Split: opens from center diagonal line outward
+  6 points in both states
+*/
+.diagSplit {
+  clip-path: polygon(50% 0, 50% 0, 50% 50%, 50% 100%, 50% 100%, 50% 50%);
+}
+.box:hover .diagSplit {
+  clip-path: polygon(0 0, 100% 0, 100% 50%, 100% 100%, 0 100%, 0 50%);
+}
+
+/*
+  X Reveal: starts from center point, opens to corners
+*/
+.xReveal {
+  clip-path: polygon(50% 50%, 50% 50%, 50% 50%, 50% 50%);
+}
+.box:hover .xReveal {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+
+/* ============================================
+   SHAPE MORPHS
+   Key rule: same number of points in both states!
+   ============================================ */
+
+/*
+  Diamond → Full
+  4 points: diamond shape → 4 corners of rectangle
+  
+      ◆              ┌──┐
+     / \      →      │  │
+     \ /             └──┘
+      ◆
+*/
+.diamond {
+  clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+}
+.box:hover .diamond {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+
+/*
+  Triangle → Full
+  Need same point count! So full rect uses 3 points (with 2 sharing a corner)
+  
+    /\               ┌──────┐
+   /  \      →       │      │
+  /____\             └──────┘
+  
+  Trick: use polygon with extra points on the same edge
+*/
+.triangle {
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%, 100% 100%);
+}
+.box:hover .triangle {
+  clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 0);
+}
+
+/*
+  Star → Full (10 points)
+*/
+.star {
+  clip-path: polygon(
+    50% 0%, 61% 35%, 98% 35%, 68% 57%,
+    79% 91%, 50% 70%, 21% 91%, 32% 57%,
+    2% 35%, 39% 35%
+  );
+}
+.box:hover .star {
+  clip-path: polygon(
+    50% 0%, 100% 0%, 100% 0%, 100% 50%,
+    100% 100%, 50% 100%, 0% 100%, 0% 50%,
+    0% 0%, 0% 0%
+  );
+}
+
+/*
+  Arrow → Full (7 points)
+*/
+.arrow {
+  clip-path: polygon(40% 0%, 100% 50%, 40% 100%, 40% 70%, 0% 70%, 0% 30%, 40% 30%);
+}
+.box:hover .arrow {
+  clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%, 0% 100%, 0% 0%, 0% 0%);
+}
+
+/* ============================================
+   SPLIT / DOOR ANIMATIONS
+   ============================================ */
+
+/*
+  Curtain Horizontal: opens from center outward (left & right)
+  
+  CLOSED:        OPEN:
+  ┌────┐┌────┐   ┌──────────────┐
+  │    ││    │   │              │
+  │    ││    │   │              │
+  └────┘└────┘   └──────────────┘
+*/
+.curtainH {
+  clip-path: polygon(50% 0, 50% 0, 50% 100%, 50% 100%);
+}
+.box:hover .curtainH {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+
+/*
+  Curtain Vertical: opens from center outward (top & bottom)
+*/
+.curtainV {
+  clip-path: polygon(0 50%, 100% 50%, 100% 50%, 0 50%);
+}
+.box:hover .curtainV {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+
+/*
+  Iris: diamond from center opens to full
+*/
+.iris {
+  clip-path: polygon(50% 40%, 60% 50%, 50% 60%, 40% 50%);
+}
+.box:hover .iris {
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+}
+
+/*
+  Fan Open: triangle from bottom-left corner expands
+*/
+.fan {
+  clip-path: polygon(0 100%, 0 100%, 0 100%);
+}
+.box:hover .fan {
+  clip-path: polygon(0 100%, 100% 0, 100% 100%);
+}
+
+/* ============================================
+   CURSOR SPOTLIGHT
+   ============================================ */
+
+.spotlight {
+  width: 100%;
+  height: 300px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  cursor: none;
+  margin-bottom: 40px;
+}
+
+.spotlightBg {
+  width: 100%;
+  height: 100%;
+  background: #111;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  color: #333;
+}
+
+.spotlightReveal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  clip-path: circle(100px at var(--x) var(--y));
+}
+
+/* ============================================
+   HERO IMAGE REVEAL
+   ============================================ */
+
+.heroWrapper {
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+  border-radius: 12px;
+  margin-bottom: 40px;
+}
+
+.hero {
+  width: 100%;
+  height: 100%;
+  background: url('/panda.webp') center/cover;
+  clip-path: circle(0% at 50% 50%);
+  transition: clip-path 1.2s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.heroWrapper:hover .hero {
+  clip-path: circle(100% at 50% 50%);
+}
+
+/* ============================================
+   APPLE-STYLE MODAL
+   ============================================ */
+
+.btn {
+  padding: 10px 24px;
+  background: #6c63ff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: modalOpen 0.6s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+  clip-path: circle(0% at var(--mx) var(--my));
+}
+
+@keyframes modalOpen {
+  to {
+    clip-path: circle(150% at var(--mx) var(--my));
+  }
+}
+
+.modalContent {
+  background: #1e1e2e;
+  padding: 40px;
+  border-radius: 16px;
+  text-align: center;
+}
+
+/* ============================================
+   PAGE TRANSITIONS
+   ============================================ */
+
+.pageBox {
+  width: 200px;
+  height: 150px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  background: #1a1a2e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pageCover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #6c63ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  transition: clip-path 0.8s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.pageCircle {
+  clip-path: circle(0% at 50% 50%);
+}
+.pageBox:hover .pageCircle {
+  clip-path: circle(100% at 50% 50%);
+}
+
+.pageWipe {
+  clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+}
+.pageBox:hover .pageWipe {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+
+.pageDiamond {
+  clip-path: polygon(50% 50%, 50% 50%, 50% 50%, 50% 50%);
+}
+.pageBox:hover .pageDiamond {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+
+/* ============================================
+   IMAGE COMPARISON SLIDER
+   ============================================ */
+
+.slider {
+  width: 100%;
+  height: 300px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  cursor: col-resize;
+  margin-bottom: 40px;
+}
+
+.sliderBefore {
+  width: 100%;
+  height: 100%;
+  background: #e74c3c;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.sliderAfter {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #2ecc71;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: bold;
+  clip-path: inset(0 0 0 var(--split));
+}
+
+.sliderLine {
+  position: absolute;
+  top: 0;
+  left: var(--split);
+  width: 3px;
+  height: 100%;
+  background: white;
+  pointer-events: none;
+}
+
+/* ============================================
+   HOVER REVEALS
+   ============================================ */
+
+.revealBox {
+  width: 200px;
+  height: 200px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  background: #1a1a2e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.revealText {
+  font-size: 14px;
+  color: #666;
+}
+
+.revealImg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('/panda.webp') center/cover;
+  transition: clip-path 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.revealCircle {
+  clip-path: circle(0% at 50% 50%);
+}
+.revealBox:hover .revealCircle {
+  clip-path: circle(70% at 50% 50%);
+}
+
+.revealInset {
+  clip-path: inset(50% round 20px);
+}
+.revealBox:hover .revealInset {
+  clip-path: inset(0% round 0px);
+}
+
+.revealPoly {
+  clip-path: polygon(50% 50%, 50% 50%, 50% 50%, 50% 50%, 50% 50%);
+}
+.revealBox:hover .revealPoly {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 0 0);
+}
+
+/* ============================================
+   CARD EXPANSION
+   ============================================ */
+
+.expandCard {
+  width: 180px;
+  height: 120px;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  border-radius: 12px;
+  cursor: pointer;
+  padding: 20px;
+  clip-path: inset(0% round 12px);
+  transition: all 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.expandCardActive {
+  width: 300px;
+  height: 200px;
+  clip-path: inset(0% round 16px);
+}
+
+/* ============================================
+   LOADER TRANSITION
+   ============================================ */
+
+.loaderBox {
+  width: 100%;
+  height: 200px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  margin-top: 16px;
+  margin-bottom: 40px;
+}
+
+.loaderContent {
+  width: 100%;
+  height: 100%;
+  background: #2ecc71;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+}
+
+.loaderOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #1a1a2e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  clip-path: inset(0);
+  transition: clip-path 1s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.loaderDone {
+  clip-path: inset(0 100% 0 0);
+}
+
+/* ============================================
+   FULL-SCREEN MENU
+   ============================================ */
+
+.menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #0d0d2b;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  clip-path: circle(0% at 95% 5%);
+  transition: clip-path 0.8s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.menuOpen {
+  clip-path: circle(150% at 95% 5%);
+}
+
+.menuClose {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 32px;
+  cursor: pointer;
+}
+
+.menuNav {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  text-align: center;
+}
+
+.menuNav a {
+  color: white;
+  text-decoration: none;
+  font-size: 36px;
+  font-weight: bold;
+  transition: opacity 0.3s;
+}
+
+.menuNav a:hover {
+  opacity: 0.6;
+}
+

@@ -1,0 +1,63 @@
+.btn {
+  position: relative;
+  padding: 14px 32px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #00c9ff, #0077ff);
+  border: none;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  overflow: hidden;
+  box-shadow: 0 8px 30px rgba(0, 119, 255, 0.4);
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #6a11cb, #0077ff);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.btn:hover {
+  transform: translateY(-3px) scale(1.04);
+  box-shadow: 0 16px 45px rgba(0, 119, 255, 0.5);
+  border-radius: 60% 40% 55% 45% / 45% 55% 40% 60%;
+}
+
+.btn:hover::before {
+  opacity: 1;
+}
+
+.btn:active {
+  transform: scale(0.96);
+  border-radius: 999px;
+}
+
+.label {
+  position: relative;
+  z-index: 1;
+}
+
+.rippleWrap {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: inherit;
+}
+
+.ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.35);
+  transform: scale(0);
+  animation: liquidRipple 0.7s ease-out forwards;
+  pointer-events: none;
+}
+
+@keyframes liquidRipple {
+  to { transform: scale(5); opacity: 0; }
+}

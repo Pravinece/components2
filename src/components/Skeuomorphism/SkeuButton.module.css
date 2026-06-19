@@ -1,0 +1,51 @@
+.btn {
+  padding: 13px 28px;
+  border-radius: 8px;
+  background: linear-gradient(160deg, #f5e6c0, #d4a843);
+  border: 1px solid #a07020;
+  box-shadow:
+    4px 4px 8px rgba(0,0,0,0.25),
+    -2px -2px 5px rgba(255,255,255,0.6),
+    inset 0 1px 0 rgba(255,255,255,0.5),
+    inset 0 -2px 0 rgba(0,0,0,0.15);
+  color: #5c3a00;
+  font-size: 14px;
+  font-weight: 700;
+  font-family: Georgia, serif;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all 0.1s ease;
+  text-shadow: 0 1px 0 rgba(255,255,255,0.4);
+  position: relative;
+  top: 0;
+}
+
+.btn:hover {
+  background: linear-gradient(160deg, #faefd0, #e0b850);
+  box-shadow:
+    5px 5px 10px rgba(0,0,0,0.28),
+    -2px -2px 5px rgba(255,255,255,0.6),
+    inset 0 1px 0 rgba(255,255,255,0.5),
+    inset 0 -2px 0 rgba(0,0,0,0.15);
+}
+
+.btn:active {
+  top: 3px;
+  box-shadow:
+    1px 1px 3px rgba(0,0,0,0.3),
+    inset 0 2px 5px rgba(0,0,0,0.2),
+    inset 0 1px 0 rgba(255,255,255,0.1);
+  background: linear-gradient(160deg, #c49030, #d4a843);
+}
+
+.btn.danger {
+  background: linear-gradient(160deg, #f5c0c0, #c44040);
+  border-color: #a02020;
+  color: #fff;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.4);
+  box-shadow:
+    4px 4px 8px rgba(0,0,0,0.25),
+    -2px -2px 5px rgba(255,255,255,0.4),
+    inset 0 1px 0 rgba(255,255,255,0.3),
+    inset 0 -2px 0 rgba(0,0,0,0.2);
+}
