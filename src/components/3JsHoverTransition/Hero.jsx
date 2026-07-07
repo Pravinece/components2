@@ -3,8 +3,8 @@ import * as THREE from 'three';
 import gsap from 'gsap';
 import { vertexShader, fragmentShader } from './HeroShaders';
 
-import imgSpiderman from '../assets/spiderman/20260407_055437.png';
-import imgMan from '../assets/man/1775519899126.png';
+import imgSpiderman from '../../assets/spiderman/20260407_055437.png';
+import imgMan from '../../assets/man/1775519899126.png';
 
 export default function Hero() {
   const containerRef = useRef(null);

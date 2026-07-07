@@ -1,5 +1,6 @@
 import React from 'react'
 import BeeModel from './BeeModel'
+import Branch from './Branch'
 import { Canvas } from '@react-three/fiber'
 import BeeLight from './BeeLight'
 
@@ -9,6 +10,7 @@ function Bee() {
     <div style={{width: '100vw', height: '100vh', position: 'fixed', top: '30%', left: '40%'}}>
         <Canvas>
             <BeeModel />
+            <Branch />
             <BeeLight />
         </Canvas>
     </div>

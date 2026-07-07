@@ -13,6 +13,8 @@ import Bee from './Bee/Bee.jsx'
 import ClipPath from './components/ClipPath/ClipPath.jsx'
 import TextAnim from './components/TextAnim/TextAnim.jsx'
 import SVGSplit from './components/SVGSplit/SVGSplit.jsx'
+import Hero from './components/3JsHoverTransition/Hero.jsx'
+import AnthropicCard from './components/AnthropicCard/AnthropicCard.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -23,11 +25,12 @@ createRoot(document.getElementById('root')).render(
     {/* <CardSplit  /> */}
     {/* <CardList /> */}
     {/* <GlbAnimate /> */}
-    {/* <Hero /> */} 
+    {/* <Hero />  */}
     {/* <PremiunmHero /> */}
     {/* <Bee /> */}
     {/* <ClipPath /> */}
     {/* <TextAnim /> */}
-    <SVGSplit />
+    {/* <SVGSplit /> */}
+    <AnthropicCard />
   </StrictMode>,
 )
