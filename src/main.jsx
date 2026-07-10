@@ -1,4 +1,4 @@
-import { StrictMode } from 'react'
+import { Profiler, StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
@@ -15,9 +15,11 @@ import TextAnim from './components/TextAnim/TextAnim.jsx'
 import SVGSplit from './components/SVGSplit/SVGSplit.jsx'
 import Hero from './components/3JsHoverTransition/Hero.jsx'
 import AnthropicCard from './components/AnthropicCard/AnthropicCard.jsx'
+import ScrollCard from './components/ScrollCard/ScrollCard.jsx'
+import DayLightEffect from './components/DayLightEffect/DayLightEffect.jsx'
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
+  <>
     {/* <App /> */}
     {/* <Canvasss /> */}
     {/* <SplitImage /> */}
@@ -31,6 +33,10 @@ createRoot(document.getElementById('root')).render(
     {/* <ClipPath /> */}
     {/* <TextAnim /> */}
     {/* <SVGSplit /> */}
-    <AnthropicCard />
-  </StrictMode>,
+    {/* <AnthropicCard /> */}
+    {/* <Profiler id="ScrollCard" >
+    <ScrollCard />
+    </Profiler> */}
+    <DayLightEffect />
+  </>,
 )
