@@ -1,0 +1,73 @@
+.container{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #88caa0;
+}
+
+.form {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    background: #fff;
+}
+
+.formBar {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    position: relative;
+}
+
+.formBar label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: capitalize;
+    color: #333;
+}
+
+.formBar input {
+    width: 100%;
+    padding: 10px 36px 10px 12px;
+    border: 1.5px solid #ddd;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    outline: none;
+    transition: border-color 0.2s;
+    box-sizing: border-box;
+}
+
+.formBar input:focus {
+    border-color: #4f46e5;
+}
+
+.formBar svg {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    width: 18px;
+    height: 18px;
+}
+
+.valid svg {
+    color: #22c55e;
+}
+
+.valid input {
+    border-color: #22c55e;
+}
+
+.error svg {
+    color: #ef4444;
+}
+
+.error input {
+    border-color: #ef4444;
+}

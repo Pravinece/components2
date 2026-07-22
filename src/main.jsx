@@ -17,6 +17,9 @@ import Hero from './components/3JsHoverTransition/Hero.jsx'
 import AnthropicCard from './components/AnthropicCard/AnthropicCard.jsx'
 import ScrollCard from './components/ScrollCard/ScrollCard.jsx'
 import DayLightEffect from './components/DayLightEffect/DayLightEffect.jsx'
+import Form from './components/Form/Form.jsx'
+import SteamEffect from './components/SteamEffect/SteamEffect.jsx'
+import MilestoneSVG from './components/MilestoneSVG/MilestoneSVG.jsx'
 
 createRoot(document.getElementById('root')).render(
   <>
@@ -37,6 +40,9 @@ createRoot(document.getElementById('root')).render(
     {/* <Profiler id="ScrollCard" >
     <ScrollCard />
     </Profiler> */}
-    <DayLightEffect />
+    {/* <DayLightEffect /> */}
+    {/* <Form /> */}
+    {/* <SteamEffect /> */}
+    <MilestoneSVG />
   </>,
 )

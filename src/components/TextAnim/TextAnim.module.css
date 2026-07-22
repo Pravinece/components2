@@ -12,7 +12,7 @@
     fill: transparent;
     stroke: #ffff;
     stroke-width: 1;
-    stroke-dasharray: 30;
+    stroke-dasharray: 25;
     stroke-dashoffset: 0;
     transition: stroke-dashoffset 1s cubic-bezier(0.47, 0, 0.745, 0.715), 
   fill 0.7s cubic-bezier(0.47, 0, 0.745, 0.715) 0.8s;
@@ -20,8 +20,8 @@
 }
 
 svg:hover path{
-    stroke-dashoffset: 30;
-    fill: #ffff;
+    stroke-dashoffset: 50;
+    /* fill: #ffff; */
 }
 
 /* @keyframes text{
