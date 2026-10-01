@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
-import image1 from '../assets/image-1.png';
-import image2 from '../assets/image-2.png';
+import image1 from '../../assets/image-1.png';
+import image2 from '../../assets/image-2.png';
 
 export default function PremiumHero() {
   const topImageRef = useRef(null);
@@ -107,10 +107,10 @@ export default function PremiumHero() {
         className="absolute inset-0 w-full h-full object-cover object-center md:object-contain pointer-events-none z-20"
         style={{
           opacity: 0,
-          WebkitMaskImage: `radial-gradient(circle 200px at 50% 50%, black 0%, black 100%)`,
-          maskImage: `radial-gradient(circle 200px at 50% 50%, black 0%, black 100%)`,
-          WebkitMaskRepeat: 'no-repeat',
-          maskRepeat: 'no-repeat'
+          // WebkitMaskImage: `radial-gradient(circle 200px at 50% 50%, black 0%, black 100%)`,
+          // maskImage: `radial-gradient(circle 200px at 50% 50%, black 0%, black 100%)`,
+          // WebkitMaskRepeat: 'no-repeat',
+          // maskRepeat: 'no-repeat'
         }}
       />
     </section>

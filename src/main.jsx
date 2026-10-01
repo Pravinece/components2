@@ -20,6 +20,10 @@ import DayLightEffect from './components/DayLightEffect/DayLightEffect.jsx'
 import Form from './components/Form/Form.jsx'
 import SteamEffect from './components/SteamEffect/SteamEffect.jsx'
 import MilestoneSVG from './components/MilestoneSVG/MilestoneSVG.jsx'
+import PageTransition from './components/PageTransition/PageTransition.jsx'
+import PremiumHero from './components/CssHoverTransition/PremiumHero.jsx'
+import Mascot from './components/Moscot/Mascot.jsx'
+import ImageResponsive from './components/ImageResponsive/ImageResponsive.jsx'
 
 createRoot(document.getElementById('root')).render(
   <>
@@ -30,8 +34,9 @@ createRoot(document.getElementById('root')).render(
     {/* <CardSplit  /> */}
     {/* <CardList /> */}
     {/* <GlbAnimate /> */}
-    {/* <Hero />  */}
-    {/* <PremiunmHero /> */}
+    {/* <Hero /> */}
+    {/* <PremiumHero /> */}
+    {/* <Mascot /> */}
     {/* <Bee /> */}
     {/* <ClipPath /> */}
     {/* <TextAnim /> */}
@@ -43,6 +48,8 @@ createRoot(document.getElementById('root')).render(
     {/* <DayLightEffect /> */}
     {/* <Form /> */}
     {/* <SteamEffect /> */}
-    <MilestoneSVG />
+    {/* <MilestoneSVG /> */}
+    {/* <PageTransition /> */}
+    <ImageResponsive />
   </>,
 )
