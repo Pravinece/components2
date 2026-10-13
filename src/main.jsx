@@ -24,6 +24,7 @@ import PageTransition from './components/PageTransition/PageTransition.jsx'
 import PremiumHero from './components/CssHoverTransition/PremiumHero.jsx'
 import Mascot from './components/Moscot/Mascot.jsx'
 import ImageResponsive from './components/ImageResponsive/ImageResponsive.jsx'
+import ModalComponent from './components/ModalComponent/ModalComponent.jsx'
 
 createRoot(document.getElementById('root')).render(
   <>
@@ -50,6 +51,9 @@ createRoot(document.getElementById('root')).render(
     {/* <SteamEffect /> */}
     {/* <MilestoneSVG /> */}
     {/* <PageTransition /> */}
-    <ImageResponsive />
+    {/* <ImageResponsive /> */}
+    <Profiler id="ModalComponent">
+    <ModalComponent />
+    </Profiler>
   </>,
 )
