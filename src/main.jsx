@@ -25,6 +25,8 @@ import PremiumHero from './components/CssHoverTransition/PremiumHero.jsx'
 import Mascot from './components/Moscot/Mascot.jsx'
 import ImageResponsive from './components/ImageResponsive/ImageResponsive.jsx'
 import ModalComponent from './components/ModalComponent/ModalComponent.jsx'
+import CircleMenu from './components/ModalComponent/CircleMenu.jsx'
+import PaperTurn from './components/PaperTurn/PaperTurn.jsx'
 
 createRoot(document.getElementById('root')).render(
   <>
@@ -52,8 +54,10 @@ createRoot(document.getElementById('root')).render(
     {/* <MilestoneSVG /> */}
     {/* <PageTransition /> */}
     {/* <ImageResponsive /> */}
-    <Profiler id="ModalComponent">
+    {/* <Profiler id="ModalComponent">
     <ModalComponent />
-    </Profiler>
+    </Profiler> */}
+    {/* <CircleMenu top={true} left={true}/> */}
+    <PaperTurn />
   </>,
 )
