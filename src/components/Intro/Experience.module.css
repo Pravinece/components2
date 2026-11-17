@@ -1,0 +1,30 @@
+.wrapper {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.canvasArea {
+  flex: 1;
+  position: relative;
+  background: #1a1a1a;
+}
+
+.canvasArea canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.overlayWrapper {
+  position: absolute;
+  top: 50%;
+  left: 58%;
+  transform: translate(-50%, -50%);
+  pointer-events: none; /* let orbit controls work */
+}
+
+/* re-enable pointer events only on the overlay itself */
+.overlayWrapper > * {
+  pointer-events: all;
+}

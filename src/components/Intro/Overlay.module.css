@@ -1,0 +1,62 @@
+.overlay {
+  position: relative;
+  width: 320px;
+  height: 400px;
+  background: rgba(255,255,255,0.15);
+  border: 2px dashed rgba(255,255,255,0.4);
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: crosshair;
+  flex-shrink: 0;
+  /* tshirt shape clip */
+  clip-path: polygon(
+    20% 0%, 30% 0%, 35% 8%, 65% 8%, 70% 0%, 80% 0%,
+    100% 15%, 85% 22%, 85% 100%,
+    15% 100%, 15% 22%, 0% 15%
+  );
+}
+
+.label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 11px;
+  color: rgba(255,255,255,0.3);
+  pointer-events: none;
+  letter-spacing: 3px;
+  user-select: none;
+}
+
+.item {
+  position: absolute;
+  cursor: grab;
+  user-select: none;
+  display: flex;
+  align-items: flex-start;
+  gap: 2px;
+}
+
+.item:active {
+  cursor: grabbing;
+}
+
+.remove {
+  background: rgba(0,0,0,0.6);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  font-size: 11px;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0;
+  flex-shrink: 0;
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+
+.item:hover .remove {
+  opacity: 1;
+}
