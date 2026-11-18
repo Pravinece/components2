@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Great+Vibes&display=swap');
+
+.root {
+  position: relative;
+  width: 100%;
+}
+
+/* This element is the one GSAP pins. */
+.stage {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+  background: #12040a;
+}
+
+.canvasWrap {
+  position: absolute;
+  inset: 0;
+}
+
+/* let vertical swipes scroll the page instead of being swallowed by the canvas */
+.canvasWrap,
+.canvasWrap > div,
+.canvasWrap canvas {
+  touch-action: pan-y !important;
+}
+
+.hint {
+  position: absolute;
+  left: 50%;
+  bottom: 28px;
+  transform: translateX(-50%);
+  margin: 0;
+  padding: 10px 22px;
+  font-family: 'Cinzel Decorative', Georgia, serif;
+  font-size: 12px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: #f0cf7a;
+  border: 1px solid rgba(240, 207, 122, 0.45);
+  background: rgba(20, 4, 10, 0.55);
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.hint[hidden] {
+  display: none;
+}
+
+.track {
+  position: absolute;
+  top: 24px;
+  right: 20px;
+  bottom: 24px;
+  width: 2px;
+  background: rgba(240, 207, 122, 0.2);
+  pointer-events: none;
+}
+
+.bar {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: #f0cf7a;
+  transform: scaleY(0);
+  transform-origin: top;
+}
